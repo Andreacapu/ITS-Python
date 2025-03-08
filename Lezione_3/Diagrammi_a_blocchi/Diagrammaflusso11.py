@@ -1,26 +1,30 @@
-liberi = 20  #inizializzazionecon numeri posti disponibili
+liberi = 20  # Inizializza il numero di posti liberi
 
 while True:
-    opzione = input("Inserisci opzione: ")  #inizializzazione match statement
+    opzione = input("Digitare l'opzione: ").strip().lower()  # Rimuove spazi bianchi e converte in minuscolo
+
     match opzione:
         case "prenota":
             if liberi > 0:
                 liberi -= 1
-                print("Posto prenotato. Posti liberi rimanenti:", liberi)
+                print("Posto prenotato")
             else:
-                print("Non ci sono posti disponibili")
+                print("Posti tutti occupati")
+
         case "libera":
-            if liberi < 20:
+            if liberi < 20:  # Assicurati che non ci siano più posti liberi del totale
                 liberi += 1
-                print("Posto liberato. Posti liberi disponibili:", liberi)
+                print("Posto disdetto")
             else:
-                print("Tutti i posti sono già liberi")
+                print("Nessun posto occupato")
+
         case "visualizza":
-            print("Posti liberi:", liberi)
+            print(f"Liberi: {liberi}")
             occupati = 20 - liberi
-            print("Posti occupati:", occupati)
+            print(f"Occupati: {occupati}")
+
         case "esci":
-            print("Uscita dal programma.")
             break
+
         case _:
             print("Opzione non valida. Riprova.")
